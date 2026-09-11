@@ -5,7 +5,7 @@ A lightweight command-line client for the [College Football Data API](https://co
 ## Features
 
 - Pass any CFBD API endpoint as an argument (e.g. `/games`, `/teams`)
-- Optional `--year` and `--team` query parameters
+- Optional `--year`, `--team`, `--week` query parameters
 - Reads your API key from an environment variable (no key in shell history or source code)
 - Prints raw JSON to stdout — pipe to `jq` or a file as needed
 
@@ -48,7 +48,7 @@ export VCPKG_ROOT=/path/to/vcpkg
 Configure:
 
 ```bash
-cmake --preset vcpkg
+cmake --preset default
 ```
 
 Build (choose a configuration):
@@ -66,7 +66,7 @@ The compiled binary will be located under `build/`.
 ## Usage
 
 ```bash
-./cfbd-cli <endpoint> [-y|--year YEAR] [-t|--team TEAM]
+./cfbd-cli <endpoint> [-y|--year YEAR] [-t|--team TEAM] [-w|--week WEEK]
 ```
 
 ### Examples
@@ -74,7 +74,7 @@ The compiled binary will be located under `build/`.
 Get all games for a team in a given season:
 
 ```bash
-./cfbd-cli /games --year 2023 --team Georgia
+./cfbd-cli /games --year 2023 --team Georgia --week 1
 ```
 
 Get team info for a season:
