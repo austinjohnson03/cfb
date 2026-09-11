@@ -12,10 +12,12 @@ int main(int argc, char **argv) {
   std::string endpoint;
   std::string year;
   std::string team;
+  std::string week;
 
   app.add_option("-e,--endpoint", endpoint, "Endpoint being hit for");
   auto *year_opt = app.add_option("-y,--year", year, "Season year");
   auto *team_opt = app.add_option("-t,--team", team, "Team name");
+  auto *week_opt = app.add_option("-w,--week", week, "Season week");
 
   CLI11_PARSE(app, argc, argv);
 
@@ -33,6 +35,7 @@ int main(int argc, char **argv) {
   cpr::Parameters params;
   if (year_opt->count() > 0) params.Add({"year", year});
   if (team_opt->count() > 0) params.Add({"team", team});
+  if (week_opt->count() > 0) params.Add({"week", week});
 
   auto response =
       cpr::Get(cpr::Url{BASE_URL + endpoint}, params,
